@@ -1,41 +1,105 @@
-# SC4061 Computer Vision
+SC4061 Computer Vision
 
 ## Topics
--	Imaging
+
+-   Imaging
+-   Image Enhancement in Spatial Domain
 
 ## Imaging
 
-### Camera
-- A camera is any device capable of collecting light rays coming from a scene and recording an image of it
-	- Sensor used can either be digital (CCD, CMOS) or analog (film)
-- The term camera is derived from the Latin term *camera obscura* which translates to "dark room"
+### Imaging Systems
 
-### Imaging Concept
-- The optical system captures focuses light rays from 1 scene point to converge at 1 point of the screen
-- The screen captures the image through photoreceptors on the screen
-	- Photoreceptors can come in the form of retina receptor cells, camera film, CCD and CMOS
-- Aperture controls the amount of light rays entering the device
+-   Imaging is about capturing a scene's shape (geometry) and brightness (radiometry) to create a 2D representation
 
-### Human Visual System
-- Optical system is represented by the lens in our eyes
-	- Controlled by eye muscles when focusing
-- Screen is represented by the retina in our eyes
-	- $10^8$ receptor cells on retina
-	- Receptor cells come in the form of rods (grayscale sensitive) and cones (colour sensitive)
-	- Optic nerve sends light information to visual cortex in the brain
-- Aperture is represented by the pupils in the iris
-	- Adjust automatically according to amount of light entering the eye
+#### Basic Components
 
-## Geometry in Image Formation
+-   Optical system: focuses light rays from a scene point to converge on one point (lens in camera or eye)
+-   Screen: captures light via photoreceptors (retina in eyes, CCD/CMOS in cameras)
+-   Aperture: controls light intake (pupil in eyes, adjustable in camera lens)
 
-### Thin Lens 
-- Can be modelled by a simple thin lens
-- Thin lens has 2 spherical surfaces close to each other and is ideal for point-to-point imaging 
-- Unideal imaging is called abberation
-- Properties 
-	- All rays entering lens parallel to optical axis will pass through the focal point on the opposite side (basic property)
-	- All rays entering lens through the focal point on its way to the lens will exit the lens parallel to the optical axis (symmetry property)
-	- All rays entering the lens center will pass straight through the lens, these rays are known as principal rays (consequent property)
-- Fundemental equations
+#### Human Visual System
 
+-   Lens focuses light and is adjusted by muscles
+-   Retina has rods for to percieve black/white and cones to perceive color, signals are sent via optic nerve to brain
+-   Iris and pupil adjusts automatically, small in bright light and large in dark
 
+#### Digital Cameras
+
+-   Use lenses, sensors and apertures
+
+### Geometric Image Formation
+
+-   Light rays from objects pass through a lens to form an inverted image on the sensor plane
+
+#### Thin Lens Model
+
+-   Can be modelled by a simple thin lens
+-   Thin lens has 2 spherical surfaces close to each other and is ideal for point-to-point imaging
+-   Unideal imaging is called abberation
+-   Properties
+    -   All rays entering lens parallel to optical axis will pass through the focal point on the opposite side (basic property)
+    -   All rays entering lens through the focal point on its way to the lens will exit the lens parallel to the optical axis (symmetry property)
+    -   All rays entering the lens center will pass straight through the lens, these rays are known as principal rays (consequent property)
+-   Lens equations
+    -   $\frac{1}{\hat{Z}} + \frac{1}{\hat{z}} = \frac{1}{f}$
+        -   $\hat{Z}$ is the distance from object to lens
+        -   $\hat{z}$ is the distance from lens to image
+        -   $f$ is the focal distance of the lens
+-   Magnification equations
+    -   $\frac{X}{\hat{Z}} = \frac{x}{\hat{z}}$ and $\frac{Y}{\hat{Z}} = \frac{y}{\hat{z}}$
+        -   (X, Y) are coordinates of a point in the object plane
+        -   (x, y) are corresponding coordinates in the image plane
+
+#### Depth of Field
+
+-   Refers to the range of depths that scene objects can be at for acceptance imaging
+-   Mainly affected by aperture
+    -   Smaller aperture will result in larger depth of field
+    -   Larger aperture will result in smaller depth of field
+
+### Radiometric Image Formation
+
+-   Deals with brightness/intensity
+-   Full model involves light sources, object reflectance, lens collection and sensor response
+-   A simplified model is $f(x, y) = i(x, y) \times r(x, y)$
+    -   $f(x, y)$ is the image intensity
+    -   $i(x, y)$ is the illumination function due to light sources
+    -   $r(x, y)$ is the reflectance function due to object shape and albedo
+
+### Digital Image Representation
+
+#### Charge Coupled Device (CCD) Array
+
+-   2D array of photo-diodes
+-   Voltage at diodes proportional to image exposure
+    -   Exposure = irradiance $\times$ time
+    -   Time is the interval that the shutter is open
+-   Color is being generated by the Bayer mosaic
+    -   B, G, G, R layout
+    -   Human eyes are more sensitive to green colour, hence 2 of them present
+
+#### Spatial Sampling
+
+-   Making it discrete
+-   Smaller intervals result in higher pixel resolution
+
+#### Quantization
+
+-   Making it digital
+-   For digital representation, diode voltages need to be quantized into discrete levels
+-   More levels would mean greater dynamic resolution
+
+#### Image as a Function or Matrix
+
+-   For grayscale images, image intensity is often expressed as a scalar function $f(x, y)$
+    -   Can also be viewed as a 2D matrix
+-   For color images, it is a vector of three functions $r(x, y)$, $g(x, y)$, $b(x, y)$
+    -   Can be viewed as 3D matrix
+
+#### Image Filed Formats
+
+-   GIF is a common 8-bit color indexing and lossless compression format used for web art
+-   TIFF is traditionally used for scanned documents, may or may not be compressed
+-   PNG is a newer lossless compressed format capable of handling 24-bit images
+-   JPEG is a common lossy compression format based on Discrete Cosine Transform (DCT) capable of achieving high compression ratios
+-   JPEG2000 is the latest lossy compression format based on Wavelet Transforms
