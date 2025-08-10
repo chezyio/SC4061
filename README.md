@@ -1,4 +1,4 @@
-SC4061 Computer Vision
+# SC4061 Computer Vision
 
 ## Topics
 
@@ -103,3 +103,83 @@ SC4061 Computer Vision
 -   PNG is a newer lossless compressed format capable of handling 24-bit images
 -   JPEG is a common lossy compression format based on Discrete Cosine Transform (DCT) capable of achieving high compression ratios
 -   JPEG2000 is the latest lossy compression format based on Wavelet Transforms
+
+## Image Enhancement in Spatial Domain
+
+### Enhancing Images
+
+-   Enhancement is done when one is not happy with how an image turns out
+    -   Can be due to low constrast, noise, blurred, missing parts and more
+-   Enhancement can be done using
+    -   Point Processing
+        -   Each pixel is modified independently based on only its own value
+        -   Operations include adjustment of brightness, contrast and gamma correction
+    -   Spatial Filtering
+        -   Each pixel's new value depends on its neighbours as well as itself, using a mask that slides across an image
+        -   Operations include blurring/smoothing, sharpening, edge detection and noise reduction
+
+### Point Processing
+
+-   Key idea: output pixel value = f(input pixel value)
+-   $s = T(r)$
+    -   $s$ is output pixel intensity
+    -   $r$ is input pixel intensity
+    -   $T$ is transformation function
+-   Same function is applied to all pixels
+-   Some functions may be dependent on global statistics
+
+#### Contrast Stretching
+
+-   Maps [r_min, r_max] to [0, 255]
+-   Improves visibility under poor illumination
+
+##### Power Law Transformations
+
+-   Functions expressed as $s = c \cdot r^\gamma$
+    -   $c$ and $\gamma$ are constants
+-   When $\gamma < 1$, it brightens dark areas
+    -   Used for MRI enhancement
+-   When $\gamma > 1$, it darkens bright areas
+    -   Used for aerial image enhancement
+
+#### Histogram Equalization
+
+-   Count how many pixels are there in the picture for each gray scale
+-   Histogram reflects frequency (probability distribution)
+-   Attempts to flatten the gray-level histogram through a gray-level transformation
+    -   Order is preserved (dark stays darker)
+
+### Spatial Filtering
+
+-   Key idea: compute new pixel as weighted sum of neighbours
+
+#### Correlation
+
+-   Correlation uses the weights directly while convolution uses a flipped kernel
+-   Formula: $g(x, y) = \sum_{s=-a}^{a} \sum_{t=-b}^{b} w(s, t) \cdot f(x+s, y+t)$
+
+#### Averaging Filter
+
+-   Replace each pixel's value with the average of its neighbours using a kernel
+-   Reduces sharp intensity variations and often used to reduce noise
+-   Steps
+    -   Place kernel over the pixel
+    -   Add up all pixel values inside the mask
+    -   Divide by total number of pixels in the mask
+    -   Assign average to the central pixel
+
+#### Gaussian Filter
+
+-   Kernel values follow Gaussian distribution
+-   Pixels closer to the center have higher weight and pixels further away have lower weight
+-   Gives a gentler blur than Averaging Filter
+
+#### Median Filter
+
+-   Non-linear filter
+-   Used to remove impulse (salt and pepper or speckle) noise from an image
+-   Effective in preserving edges
+-   Steps
+    -   For each pixel in the image, consider a small neighborhood centered around the pixel
+    -   Sort all pixel values in that neighborhood
+    -   Replace the center pixel value with the median value from the sorted list
