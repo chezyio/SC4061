@@ -14,7 +14,7 @@ Human eyes perform the above function most obviously by:
 
 Light bends as it passes from one medium to another with a different refractive index (e.g., from air to water or air to glass)
 
-Since an imaging system mimics our human eyes, it performs \_\_\_\_ human eyes:
+Since an imaging system mimics our human eyes, it performs ___ human eyes:
 
 -   [ ] Better than
 -   [ ] Worse than
