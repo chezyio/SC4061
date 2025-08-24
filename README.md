@@ -4,6 +4,7 @@
 
 -   Imaging
 -   Image Enhancement in Spatial Domain
+-   Image Enhancement in Frequency Domain
 
 ## Imaging
 
@@ -197,3 +198,13 @@
     -   No effective way to do so
     -   No feedback
 -   Inception of Deep CNN revolutionized machine learning by enabling kernels to be learned automatically from data, rather than being hand-engineered
+
+## Image Enhancement in Frequency Domain
+
+### Fourier Transform
+
+-   Fourier Transform is a mathematical tool used to transform an image from the spatial domain (where pixels are arranged in a grid of x, y coordinates) to the frequency domain
+-   Image is represented as a combination of different frequencies
+    -   Low frequencies represent smooth, gradual changes in an image (uniform areas)
+    -   High frequencies represent rapid changes (edges, textures, or noise)
+-
