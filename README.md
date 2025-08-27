@@ -139,6 +139,7 @@
 
 -   Maps [r_min, r_max] to [0, 255]
 -   Improves visibility under poor illumination
+-   Typically involves using a smaller range as input to represent larger range as output
 
 ##### Power Law Transformations
 
@@ -174,12 +175,17 @@
     -   Add up all pixel values inside the mask
     -   Divide by total number of pixels in the mask
     -   Assign average to the central pixel
+-   Good at removing noise
+-   Everything will be more or less the same, need to know the features before applying filter
 
 #### Gaussian Filter
 
 -   Kernel values follow Gaussian distribution
 -   Pixels closer to the center have higher weight and pixels further away have lower weight
 -   Gives a gentler blur than Averaging Filter
+-   Compute at discrete values for different size spatial filters
+-   Normalize sum of coefficients to 1
+-   Popular and often used
 
 #### Median Filter
 
