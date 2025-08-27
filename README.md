@@ -177,6 +177,7 @@
     -   Assign average to the central pixel
 -   Good at removing noise
 -   Everything will be more or less the same, need to know the features before applying filter
+-   DIsadv/adv
 
 #### Gaussian Filter
 
