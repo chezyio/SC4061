@@ -14,7 +14,7 @@ Human eyes perform the above function most obviously by:
 
 Light bends as it passes from one medium to another with a different refractive index (e.g., from air to water or air to glass)
 
-Since an imaging system mimics our human eyes, it performs ___ human eyes:
+Since an imaging system mimics our human eyes, it performs \_\_\_ human eyes:
 
 -   [ ] Better than
 -   [ ] Worse than
@@ -87,3 +87,50 @@ A picture may not be up to your expectation because of
 -   [x] Noise
 -   [x] Motion/shaking blur
 -   [x] Unwanted objects/persons
+
+Point processing is of course “point-wise” and thus not global.
+
+-   [ ] Yes
+-   [x] No
+
+The purpose of point processing is
+
+-   [x] Increase content information
+-   [x] Increase perception comfort
+-   [x] Scientific operation
+-   [ ] nonsense
+
+In power law transformation, c is
+
+-   [ ] 1
+-   [ ] L-1
+-   [x] (L-1)^(1-γ)
+-   [ ] (L-1)^(-γ)
+
+After histogram equalization, the largest value (L-1) in the original image becomes
+
+-   [ ] L-2
+-   [x] L-1
+-   [ ] L
+-   [ ] Others
+
+Can spatial filtering remove noise?
+
+-   [x] Yes
+-   [ ] No
+
+Can spatial filtering find image features?
+
+-   [x] Yes
+-   [ ] No
+
+Correlation and convolution are
+
+-   [] same
+-   [x] different
+
+Image padding can be done by
+
+-   [x] Adding zeros
+-   [x] Data extension
+-   [x] Data mirroring
