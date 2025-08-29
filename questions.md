@@ -126,7 +126,7 @@ Can spatial filtering find image features?
 
 Correlation and convolution are
 
--   [] same
+-   [ ] same
 -   [x] different
 
 Image padding can be done by
