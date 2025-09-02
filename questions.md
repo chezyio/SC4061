@@ -158,4 +158,3 @@ Is the spatial averaging only applicable to neighboring pixels?
 -   [ ] Yes
 -   [x] No
 
--   must know how to sketch real part of fourier transform
