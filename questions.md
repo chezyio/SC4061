@@ -134,3 +134,26 @@ Image padding can be done by
 -   [x] Adding zeros
 -   [x] Data extension
 -   [x] Data mirroring
+
+Three pixels have the same signal intensity. Their average value is
+
+-   [ ] Smaller
+-   [x] Same
+-   [ ] Larger
+
+Three pixels have random values, each obeying Gaussian distribution with the same mean and standard deviation. The average value' mean is
+
+-   [ ] Smaller
+-   [x] Same
+-   [ ] Larger
+
+The above average value's standard deviation is
+
+-   [x] Smaller
+-   [ ] Same
+-   [ ] Larger
+
+Is the spatial averaging only applicable to neighboring pixels?
+
+-   [ ] Yes
+-   [x] No
