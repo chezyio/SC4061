@@ -222,6 +222,15 @@
 -   Image can be represented as a combination of different frequencies
     -   Low frequencies represent smooth, gradual changes in an image (uniform areas)
     -   High frequencies represent rapid changes (edges, textures, or noise)
+
+```math
+f(x, y) = F_0 \times a_0(x, y) + F_1 \times a_1(x, y) + F_2 \times a_2(x, y) + \dots + F_{n-1} \times a_{n-1}(x, y) = \sum_{i=0}^{n-1} F_i a_i(x, y)
+```
+
+```math
+a_{(u,v)}(x, y) = \exp\left[j2\pi\left( \frac{xu}{M} + \frac{yv}{N}\right)\right] = \cos\left[2\pi \left( \frac{xu}{M} + \frac{yv}{N} \right)\right] + j \sin\left[2\pi \left( \frac{xu}{M} + \frac{yv}{N} \right)\right]
+```
+
 -   To transform an image from the spatial domain (pixels) to the frequency domain, apply Fourier Transform
 
 ```math
@@ -242,3 +251,61 @@ F(u, v) \,
   j 2 \pi \left( \frac{ux}{M} + \frac{vy}{N} \right)
 \right]
 ```
+
+-   Simplify caluclations for things like waves and rotations by providing a way to handle oscillations
+
+```math
+j = \sqrt{-1}
+```
+
+#### Worked Example
+
+-   Sketch the real part of the basis function $a_{(u,v)}(x, y)$ for a 32x32 image ($M = N = 32$) with frequency pairs $(u, v) = (0, 0), (0, 8), (0, 16), (0, 24)$
+
+-   Real part is:
+    $$ \cos\left[2\pi \left( \frac{xu}{M} + \frac{yv}{N} \right)\right] $$
+
+-   Since $M = N = 32$ and $u = 0$, this simplifies to:
+    $$ \cos\left[2\pi \cdot \frac{y v}{32}\right] $$
+
+-   This depends only on $y$ and $v$, producing horizontal stripes that vary along the $y$-direction, constant along $x$. The grid has $x, y = 0, 1, \dots, 31$.
+
+-   For $(u, v) = (0, 0)$,
+    $$ \cos\left[2\pi \cdot \frac{y \cdot 0}{32}\right] = \cos(0) = 1 $$
+
+    -   The real part is 1 across the entire 32x32 grid, representing a uniform (DC) component.
+
+-   For $(u, v) = (0, 8)$,
+    $$ \cos\left[2\pi \cdot \frac{y \cdot 8}{32}\right] = \cos\left[\frac{\pi y}{2}\right] $$
+
+    -   The period is $y = 4$ (since $\frac{\pi y}{2} = 2\pi \implies y = 4$), giving 8 cycles over $y = 0$ to 31.
+        -   $y = 0$: $\cos(0) = 1$
+        -   $y = 1$: $\cos(\frac{\pi}{2}) = 0$
+        -   $y = 2$: $\cos(\pi) = -1$
+        -   $y = 3$: $\cos(\frac{3\pi}{2}) = 0$
+        -   $y = 4$: $\cos(2\pi) = 1$
+    -   Pattern: $[1, 0, -1, 0]$, repeating 8 times
+    -   8 horizontal stripes, each 4 pixels tall, alternating bright (1), neutral (0), dark (-1), neutral (0)
+
+-   For $(u, v) = (0, 16)$,
+    $$ \cos\left[2\pi \cdot \frac{y \cdot 16}{32}\right] = \cos[\pi y] $$
+
+    -   The period is $y = 2$ (since $\pi y = 2\pi \implies y = 2$), giving 16 cycles
+        -   $y = 0$: $\cos(0) = 1$
+        -   $y = 1$: $\cos(\pi) = -1$
+        -   $y = 2$: $\cos(2\pi) = 1$
+    -   Pattern: $[1, -1]$, repeating 16 times
+    -   16 horizontal stripes, each 2 pixels tall, alternating bright (1) and dark (-1)
+
+-   For $(u, v) = (0, 24)$,
+    $$\cos\left[2\pi \cdot \frac{y \cdot 24}{32}\right] = \cos\left[\frac{3\pi y}{4}\right] $$
+    -   The period is $y = \frac{8}{3} \approx 2.667$ (since $\frac{3\pi y}{4} = 2\pi \implies y = \frac{8}{3}$), giving ~12 cycles
+        -   $y = 0$: $\cos(0) = 1$
+        -   $y = 1$: $\cos(\frac{3\pi}{4}) \approx -0.707$
+        -   $y = 2$: $\cos(\frac{6\pi}{4}) = 0$
+        -   $y = 3$: $\cos(\frac{9\pi}{4}) \approx 0.707$
+        -   $y = 4$: $\cos(\frac{12\pi}{4}) = -1$
+    -   Pattern repeats every 8 pixels
+    -   ~12 horizontal stripes with smooth transitions (1, -0.707, 0, 0.707, -1, ...), period ~2.667 pixels
+
+![](./assets/ft_real.png)
