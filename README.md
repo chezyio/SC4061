@@ -168,6 +168,7 @@
 
 #### Averaging Filter
 
+-   Also known as box filter
 -   Replace each pixel's value with the average of its neighbours using a kernel
 -   Reduces sharp intensity variations and often used to reduce noise
 -   Steps
@@ -177,7 +178,9 @@
     -   Assign average to the central pixel
 -   Good at removing noise
 -   Everything will be more or less the same, need to know the features before applying filter
--   DIsadv/adv
+-   Generally can help to smooth edges but results in loss of fine features
+    -   If feature of interest is broad region or overall shape, averaging can help
+    -   If feature of interest is edges, corners or fine detail, averaging is harmful
 
 #### Gaussian Filter
 
@@ -205,6 +208,11 @@
     -   No effective way to do so
     -   No feedback
 -   Inception of Deep CNN revolutionized machine learning by enabling kernels to be learned automatically from data, rather than being hand-engineered
+-   Mathematically, convolution and correlation are not the same
+    -   Convolution flips the kernel, while correlation does not
+-   Most libraries implement cross-correlation where no flipping is done
+    -   Computationally simpler
+    -   Kernel weights are eventually to be learned, flipping is rendered useless
 
 ## Image Enhancement in Frequency Domain
 
@@ -215,3 +223,29 @@
     -   Low frequencies represent smooth, gradual changes in an image (uniform areas)
     -   High frequencies represent rapid changes (edges, textures, or noise)
 -
+
+-   To transform an image from the spatial domain (pixels) to the frequency domain, apply Fourier Transform
+    -   Conversely, inverse Fourier Transform is used to go from frequency domain to spatial domain
+
+```math
+F(u, v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} 
+f(x, y) \, 
+\exp\!\left[
+  -j 2 \pi \left( \frac{ux}{M} + \frac{vy}{N} \right)
+\right]
+```
+
+
+
+```math
+f(x, y) = \frac{1}{MN} 
+\sum_{u=0}^{M-1} \sum_{v=0}^{N-1} 
+F(u, v) \, 
+\exp\!\left[
+  j 2 \pi \left( \frac{ux}{M} + \frac{vy}{N} \right)
+\right]
+```
+
+
+
+-   must know how to sketch real part of fourier transform
