@@ -263,20 +263,20 @@ j = \sqrt{-1}
 -   Sketch the real part of the basis function $a_{(u,v)}(x, y)$ for a 32x32 image ($M = N = 32$) with frequency pairs $(u, v) = (0, 0), (0, 8), (0, 16), (0, 24)$
 
 -   Real part is:
-    $$ \cos\left[2\pi \left( \frac{xu}{M} + \frac{yv}{N} \right)\right] $$
+    $$\cos\left[2\pi \left( \frac{xu}{M} + \frac{yv}{N} \right)\right]$$
 
 -   Since $M = N = 32$ and $u = 0$, this simplifies to:
-    $$ \cos\left[2\pi \cdot \frac{y v}{32}\right] $$
+    $$\cos\left[2\pi \cdot \frac{y v}{32}\right] $$
 
 -   This depends only on $y$ and $v$, producing horizontal stripes that vary along the $y$-direction, constant along $x$. The grid has $x, y = 0, 1, \dots, 31$.
 
 -   For $(u, v) = (0, 0)$,
-    $$ \cos\left[2\pi \cdot \frac{y \cdot 0}{32}\right] = \cos(0) = 1 $$
+    $$\cos\left[2\pi \cdot \frac{y \cdot 0}{32}\right] = \cos(0) = 1$$
 
     -   The real part is 1 across the entire 32x32 grid, representing a uniform (DC) component.
 
 -   For $(u, v) = (0, 8)$,
-    $$ \cos\left[2\pi \cdot \frac{y \cdot 8}{32}\right] = \cos\left[\frac{\pi y}{2}\right] $$
+    $$\cos\left[2\pi \cdot \frac{y \cdot 8}{32}\right] = \cos\left[\frac{\pi y}{2}\right]$$
 
     -   The period is $y = 4$ (since $\frac{\pi y}{2} = 2\pi \implies y = 4$), giving 8 cycles over $y = 0$ to 31.
         -   $y = 0$: $\cos(0) = 1$
@@ -288,7 +288,7 @@ j = \sqrt{-1}
     -   8 horizontal stripes, each 4 pixels tall, alternating bright (1), neutral (0), dark (-1), neutral (0)
 
 -   For $(u, v) = (0, 16)$,
-    $$ \cos\left[2\pi \cdot \frac{y \cdot 16}{32}\right] = \cos[\pi y] $$
+    $$\cos\left[2\pi \cdot \frac{y \cdot 16}{32}\right] = \cos[\pi y]$$
 
     -   The period is $y = 2$ (since $\pi y = 2\pi \implies y = 2$), giving 16 cycles
         -   $y = 0$: $\cos(0) = 1$
@@ -298,7 +298,7 @@ j = \sqrt{-1}
     -   16 horizontal stripes, each 2 pixels tall, alternating bright (1) and dark (-1)
 
 -   For $(u, v) = (0, 24)$,
-    $$\cos\left[2\pi \cdot \frac{y \cdot 24}{32}\right] = \cos\left[\frac{3\pi y}{4}\right] $$
+    $$\cos\left[2\pi \cdot \frac{y \cdot 24}{32}\right] = \cos\left[\frac{3\pi y}{4}\right]$$
     -   The period is $y = \frac{8}{3} \approx 2.667$ (since $\frac{3\pi y}{4} = 2\pi \implies y = \frac{8}{3}$), giving ~12 cycles
         -   $y = 0$: $\cos(0) = 1$
         -   $y = 1$: $\cos(\frac{3\pi}{4}) \approx -0.707$
