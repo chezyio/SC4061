@@ -219,33 +219,26 @@
 ### Fourier Transform
 
 -   Fourier Transform is a mathematical tool used to transform an image from the spatial domain (where pixels are arranged in a grid of x, y coordinates) to the frequency domain
--   Image is represented as a combination of different frequencies
+-   Image can be represented as a combination of different frequencies
     -   Low frequencies represent smooth, gradual changes in an image (uniform areas)
     -   High frequencies represent rapid changes (edges, textures, or noise)
--
-
 -   To transform an image from the spatial domain (pixels) to the frequency domain, apply Fourier Transform
-    -   Conversely, inverse Fourier Transform is used to go from frequency domain to spatial domain
 
 ```math
-F(u, v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} 
-f(x, y) \, 
+F(u, v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1}
+f(x, y) \,
 \exp\!\left[
-  -j 2 \pi \left( \frac{ux}{M} + \frac{vy}{N} \right)
+    -j 2 \pi \left( \frac{ux}{M} + \frac{vy}{N} \right)
 \right]
 ```
 
-
+-   Conversely, Inverse Fourier Transform is used to go from frequency domain to spatial domain
 
 ```math
-f(x, y) = \frac{1}{MN} 
-\sum_{u=0}^{M-1} \sum_{v=0}^{N-1} 
-F(u, v) \, 
+f(x, y) = \frac{1}{MN}
+\sum_{u=0}^{M-1} \sum_{v=0}^{N-1}
+F(u, v) \,
 \exp\!\left[
   j 2 \pi \left( \frac{ux}{M} + \frac{vy}{N} \right)
 \right]
 ```
-
-
-
--   must know how to sketch real part of fourier transform
