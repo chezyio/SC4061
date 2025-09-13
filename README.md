@@ -310,3 +310,36 @@ j = \sqrt{-1}
     -   ~12 horizontal stripes with smooth transitions (1, -0.707, 0, 0.707, -1, ...), period ~2.667 pixels
 
 ![](./assets/ft_real.png)
+
+
+
+wk5 notes
+
+-   Periods can indexed by U and V
+-   In order to find "the amount of ingredient F\_ (u,v)" for each "ingredient", need to perform decomposition
+-   If 1/MN is not present after decomposing and synthesizing back, intensity will be MN times larger — normalization
+-   decompose = FT, sythesis = IFT
+-   29:00
+-   Specturm is a plot of all F(u,v)
+-   Only information required for each layer is how much each layer is required ("the amount of ingredient", the F(u,v) value )
+-   Low frequency would result in brighter spots in the spectrum
+    -   Conversely for high frequency having darker spots
+-   fftshift is used for convenience to shift origin from top left to center
+-   FFT speeds up FT
+-   Instead of performing convolution, we can use FT on each image and then multiply the 2 FTed imaages, reuslting in faster and more efficient compute
+    -   Kernel used in convolution can be padded (usually zero padded) to the same size as the image for matmul to take place
+
+What is frequency?
+
+-   Number of cycles
+
+What is a signal?
+
+-   1D signal often refererd to as signal, 2D signal often referred to as image, 3D signal is volume
+-   Referring to information
+
+-   High frequency means more cycles and hence more "lines" appearing on the specturm
+
+Low frequency component reflect slow changing part, trend and overall information
+High frequency component reflect fast changing part, sudden change, jump and details
+Usually images will have strong low frequency components
