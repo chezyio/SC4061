@@ -267,6 +267,20 @@ j = \sqrt{-1}
 -   `fftshift()` is used for convenience to shift origin from top left to center
 
 
+### Convolution Theorem
+
+-   Convolution of two spatial images is equivalent to multiplying the corresponding FTs
+    -   Much lower computational cost
+
+```math
+g(x, y) = f(x, y) \otimes h(x, y) \\
+\Updownarrow \\
+G(x, y) = F(x, y) H(x, y)
+```
+
+```math
+f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \mathcal{F}\{h(x, y)\} \big]
+```
 
 #### Worked Example
 
