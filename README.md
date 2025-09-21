@@ -266,7 +266,6 @@ j = \sqrt{-1}
     -   Kernel used in convolution can be padded (usually zero padded) to the same size as the image for matmul to take place
 -   `fftshift()` is used for convenience to shift origin from top left to center
 
-
 ### Convolution Theorem
 
 -   Convolution of two spatial images is equivalent to multiplying the corresponding FTs
@@ -281,6 +280,21 @@ G(x, y) = F(x, y) H(x, y)
 ```math
 f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \mathcal{F}\{h(x, y)\} \big]
 ```
+
+### Frequency and Spectrum
+
+-   Periods can indexed by U and V
+-   Decomposition is used to find out the amount that is required to be multiplied to a component
+-   If $\frac{1}{MN}$ is not present after decomposing and synthesizing back, intensity will be $MN$ times larger — normalization ??? normalization
+-   Synthesis is the process of performing IFT
+-   Decomposition is the process of performing FT
+-   Specturm is a plot of all $F(u,v)$
+-   High frequency means more cycles and result in more "lines" appearing on the specturm
+    -   Low frequency component reflect slow changing part, trend and overall information
+    -   High frequency component reflect fast changing part, sudden change, jump and details
+-   Low frequency would result in brighter spots in the spectrum
+    -   Conversely for high frequency having darker spots
+-   Usually images will have strong low frequency components
 
 #### Worked Example
 
