@@ -303,6 +303,11 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
     -   White noise has flat power spectrum
 -   By placing a cylindrical $H(u,v)$ in the center of the specturm with a value of 1 in the middle and 0 in the corners
 
+#### Gaussian Low-pass Filter
+
+-   When performing FT on gaussian, the result will be a gaussian (spatial to frequency domain)
+-   Reduces the "ringing" effect
+
 #### Worked Example
 
 -   Sketch the real part of the basis function $a_{(u,v)}(x, y)$ for a 32x32 image ($M = N = 32$) with frequency pairs $(u, v) = (0, 0), (0, 8), (0, 16), (0, 24)$
