@@ -308,6 +308,11 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
 -   When performing FT on gaussian, the result will be a gaussian (spatial to frequency domain)
 -   Reduces the "ringing" effect
 
+### High-pass Filtering
+
+-   Opposite of low-pass filter
+-   Used for image sharpening, edge filtering/detection
+
 #### Worked Example
 
 -   Sketch the real part of the basis function $a_{(u,v)}(x, y)$ for a 32x32 image ($M = N = 32$) with frequency pairs $(u, v) = (0, 0), (0, 8), (0, 16), (0, 24)$
