@@ -313,6 +313,13 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
 -   Opposite of low-pass filter
 -   Used for image sharpening, edge filtering/detection
 
+### Notch and Band-reject Filters
+
+-   All filters other than low-pass and high-pass filters can be called band-pass filters
+-   Notch filters reject a certain frequency
+    -   Eliminate redundant areas in the spectrum
+-   Band-reject filters reject a band of frequencies
+
 #### Worked Example
 
 -   Sketch the real part of the basis function $a_{(u,v)}(x, y)$ for a 32x32 image ($M = N = 32$) with frequency pairs $(u, v) = (0, 0), (0, 8), (0, 16), (0, 24)$
