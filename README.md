@@ -372,3 +372,16 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
     -   ~12 horizontal stripes with smooth transitions (1, -0.707, 0, 0.707, -1, ...), period ~2.667 pixels
 
 ![](./assets/ft_real.png)
+
+## Image Edge Processing
+
+### Edges
+
+-   Edge is a sequence of connected edge elements (edgels)
+-   Edges represent changes, which carry information
+-   Gradient (first derivative of image intensity) becomes larger at edges because they represent sharp transitions between regions of different brightness or color
+-   Curvature (second derivative or rate of change in the gradient) becomes smaller at edges because ideal edges are modeled as consistent transitions, such as step or ramp functions, where the rate of change is steady rather than rapidly varying
+-   General steps to detect edges
+    -   Edge filtering produces grayscale image with gradient magnitudes
+    -   Edgel detection creates binary image of edgels from filtered image
+    -   Edgel linking connects edgels into edges
