@@ -385,3 +385,19 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
     -   Edge filtering produces grayscale image with gradient magnitudes
     -   Edgel detection creates binary image of edgels from filtered image
     -   Edgel linking connects edgels into edges
+
+### Prewitt and Sobel
+
+-   In Prewitt's kernel:
+    -   Rows of -1, 0 and 1 help to identiy horizontal jumps
+    -   Columns of -1, 0 and 1 help to identify vertical jumps
+    -   Apply both to find vboth jumps
+-   Kernel size is usually odd number (3x3, 5x5, etc)
+    -   Middle value is for the differnce calculated
+    -   In row level kernel, vertical for derivative and horizontal for average
+-   In Sobel's model
+    -   Use of Gaussian
+    -   Used more often than Prewitt
+    -   Sensitive to noise
+    -   Varying strength (some dark, some bright)
+    -   Varying thickness
