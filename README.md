@@ -401,3 +401,8 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
     -   Sensitive to noise
     -   Varying strength (some dark, some bright)
     -   Varying thickness
+
+### Laplacian of Gaussian
+
+-   Not commonly used anymore
+-   Edge is a jump and can be found using the first order derivative making it easier to detect edges
