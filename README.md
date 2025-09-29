@@ -406,3 +406,21 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
 
 -   Not commonly used anymore
 -   Edge is a jump and can be found using the first order derivative making it easier to detect edges
+
+### Canny Edge Detection
+
+-   Solves the limitations of Sobel's
+
+#### Using Gaussian to solve noise
+
+-   Can perform derivative first followed by convolution (preferred) or vice-versa
+    -   Preferred as as derivative can be pre-computed
+
+#### Using Non-maximal Suppresion to solve thickness
+
+-   XXX
+
+#### Using Hysteresis thresholding to solve strength
+
+-   XXX
+-   For ambiguous edgels, if a neighbouring edgel has been classified as an edge, then the ambiguous edgel is considered to be an edge
