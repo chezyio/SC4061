@@ -158,3 +158,8 @@ Is the spatial averaging only applicable to neighboring pixels?
 -   [ ] Yes
 -   [x] No
 
+Canny edge detector needs to set the parameter(s) of
+
+-   [x] A kernel size
+-   [x] A threshold
+-   [ ] Two thesholds
