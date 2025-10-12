@@ -6,6 +6,8 @@
 -   Image Enhancement in Spatial Domain
 -   Image Enhancement in Frequency Domain
 -   Image Edge Processing
+-   Region Processing
+-   Object Recognition
 
 ## Imaging
 
@@ -391,7 +393,7 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
 -   In Prewitt's kernel:
     -   Rows of -1, 0 and 1 help to identiy horizontal jumps
     -   Columns of -1, 0 and 1 help to identify vertical jumps
-    -   Apply both to find vboth jumps
+    -   Apply both to find both jumps
 -   Kernel size is usually odd number (3x3, 5x5, etc)
     -   Middle value is for the differnce calculated
     -   In row level kernel, vertical for derivative and horizontal for average
@@ -405,6 +407,11 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
 ### Laplacian of Gaussian
 
 -   Not commonly used anymore
+-   Combines two key operations
+    -   Gaussian smoothing (to reduce noise)
+        -   Low-pass filter that blurs an image to suppress high-frequency noise
+    -   Laplacian operator (to detect regions of rapid intensity change)
+        -   Second-derivative filter that highlights areas where the image intensity changes sharply (edges) while producing zero response in regions of constant intensity
 -   Edge is a jump and can be found using the first order derivative making it easier to detect edges
 
 ### Canny Edge Detection
@@ -415,12 +422,51 @@ f(x, y) \otimes h(x, y) = \mathcal{F}^{-1} \big[ \mathcal{F}\{f(x, y)\} \cdot \m
 
 -   Can perform derivative first followed by convolution (preferred) or vice-versa
     -   Preferred as as derivative can be pre-computed
+-   Input image is filtered twice by the $x$ and $y$ derivatives of Gaussian
 
-#### Using Non-maximal Suppresion to solve thickness
+#### Using Non-maximal Suppresion to Solve Thickness
 
--   XXX
+-   Addresses varying edge thickness by suppressing any pixel that is not a local maximum in gradient direction
+-   For each pixel, compare its gradient magnitude with neighbours along gradient direction
+    -   If it is not the strongest, then suppress it
 
-#### Using Hysteresis thresholding to solve strength
+#### Using Hysteresis Thresholding to Solve Strength
 
--   XXX
--   For ambiguous edgels, if a neighbouring edgel has been classified as an edge, then the ambiguous edgel is considered to be an edge
+-   To handle varying edge strengths, apply two thresholds high, (strong edges) and low (weak edges)
+    -   Pixels above the high threshold are makred as definite edges
+    -   Pixels below low threshold are discarded
+    -   Pixels between thresholds are kept only if connected to a strong edgel
+-   Useful for removing tiny noisy edges and to find long edges
+
+### Edge Linking
+
+-   Solve broken edges
+-   After normal or hysteresis thresholding, a binary image is obtained with strong connected edgels shown
+-   Edgel linking is not easy
+
+#### Hough Transform
+
+-   Normal vector is represented by $\rho$ and $\theta$
+    -   Changing $\rho$ translate the line (move horizontally and vertically)
+    -   Changing $\theta$ rotates the line
+-   $x \cos \theta + y \sin \theta = \rho$
+
+    -   A pair of $(\rho, \theta)$ represents a unique line
+
+-   Edges can be found be looking for large derivates or zero curvature
+-   Edgel detection creates a binary iamge containing edgels from the edge filtered image
+
+    -   1 when there is a edge pixel and 0 when absent
+
+-   When doing correlation, if you get a bright point/high correlation value, similar to kernel
+
+    -   If similar, they will boost each other
+    -   If not similar, they will cancel out
+    -   Kernel (prewit and sobel) can then be used on an image, and large value returned will mean that there is an edge
+
+-   When f convolutes with LoG, essentially we're doing gaussian filtering
+    -   Gaussian is used to make edge detector robust to noise
+-   More nosie then use a bigger sigma
+
+-   for first order, use prewitt and sobel
+-   for second order (curvature), use LoG
